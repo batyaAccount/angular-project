@@ -1,0 +1,46 @@
+
+<div class="form-container">
+    <form [formGroup]="addCourseForm" class="add-course-form">
+        <mat-form-field class="form-field">
+            <mat-label>Course Title</mat-label>
+            <input matInput type="text" formControlName="title" name="title">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>Course Description</mat-label>
+            <input matInput type="text" formControlName="description" name="description">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>Teacher ID</mat-label>
+            <input matInput type="text" formControlName="teacherId" name="teacherId">
+        </mat-form-field>
+
+        <h3>Lessons</h3>
+        <div formArrayName="lessons">
+          <div class="lesson-container">
+            @for (lesson of lessons.controls; track $index) {
+              <div [formGroupName]="$index">
+                <mat-form-field>
+                  <mat-label>Lesson Title</mat-label>
+                  <input matInput  formControlName="title">
+                </mat-form-field>
+    
+                <mat-form-field >
+                  <mat-label>Lesson Content</mat-label>
+                  <textarea matInput formControlName="content"></textarea>
+                </mat-form-field>
+    
+                <button mat-raised-button (click)="removeLesson($index); $event.preventDefault(); ">Remove</button>
+              </div>
+            }
+          
+          </div>
+        </div>
+    
+        <button mat-raised-button (click)="addLesson()">Add Lesson</button>
+        
+        <br />
+        <button class="submit" mat-raised-button color="primary" (click)="sent()" >Submit</button>
+    </form>
+</div>

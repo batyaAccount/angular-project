@@ -1,0 +1,12 @@
+<mat-card style="height: max-content;">
+    <mat-card-header>
+      <mat-card-subtitle>Teacher {{teacher.name}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content style="width: 40vh;">
+      <h2>Course {{course.title}}</h2>
+      <p>Description: {{course.description}}</p>
+      <p>Lessons: </p>
+      <div [innerHTML]="this.lessons | lessons"></div>
+    </mat-card-content>
+  </mat-card>
