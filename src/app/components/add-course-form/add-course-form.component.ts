@@ -72,15 +72,7 @@ export class AddCourseFormComponent {
 
 
   removeLesson(index: number): void {
-    this.lessons.removeAt(index);
-    this.cdr.detectChanges();
-    this.sent("laod")
-    // let l: Partial<Lessons>[] = []
-    // for (let i = 0; i < this.tmp.length && index != i; i++) {
-    //   l.push(this.tmp[index]);
-    // }
-
-    // window.location.reload();
+    this.lessons.removeAt(index);   
 
   }
 
