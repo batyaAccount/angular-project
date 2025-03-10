@@ -7,7 +7,6 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { letGuard } from './let.guard';
 
 export const routes: Routes = [
     { path: '', component: LoginPageComponent },
