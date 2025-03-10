@@ -14,7 +14,7 @@ export const routes: Routes = [
     { path: "sign-in", component: SignInComponent },
     { path: "sign-up", component: SignUpComponent },
     { path: "add-course", component: AddCourseFormComponent },
-    { path: "add-course/:courseId", component: AddCourseFormComponent , canActivate:[letGuard] },
+    { path: "add-course/:courseId", component: AddCourseFormComponent},
     { path: "home", component: HomePageComponent, children: [
             {
                 path: "my-courses", component: MyCoursesComponent, children: [

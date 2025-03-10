@@ -31,7 +31,7 @@
                   <textarea matInput formControlName="content"></textarea>
                 </mat-form-field>
     
-                <button mat-raised-button (click)="removeLesson($index); $event.preventDefault(); ">Remove</button>
+                <button mat-raised-button [routerLink]="['/add-course',courseId]" (click)="removeLesson($index); $event.preventDefault(); ">Remove</button>
               </div>
             }
           

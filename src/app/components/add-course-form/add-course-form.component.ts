@@ -5,7 +5,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { CoursesService } from "../../services/courses.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { Courses } from "../../../Courses";
 import { Lessons } from "../../../Lessons";
@@ -13,7 +13,7 @@ import { Lessons } from "../../../Lessons";
 @Component({
   selector: 'app-add-course-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule],
+  imports: [RouterLink,ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule],
   templateUrl: './add-course-form.component.html',
   styleUrl: './add-course-form.component.css'
 })
@@ -95,7 +95,7 @@ export class AddCourseFormComponent {
       if (typ == "send")
         this.router.navigate(['/home/courses-page']);
       else {
-        window.location.reload();
+
       }
     }, error => {
 
