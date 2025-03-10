@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -18,7 +18,7 @@ import { Lessons } from "../../../Lessons";
   styleUrl: './add-course-form.component.css'
 })
 export class AddCourseFormComponent {
-  constructor(private coursesService: CoursesService, private router: Router, private route: ActivatedRoute, private user: UserService) {
+  constructor(private cdr: ChangeDetectorRef, private coursesService: CoursesService, private router: Router, private route: ActivatedRoute, private user: UserService) {
     const courseId = this.route.snapshot.paramMap.get('courseId');
     if (courseId) {
       this.coursesService.getCourseById(+courseId).subscribe(course => {
@@ -27,7 +27,7 @@ export class AddCourseFormComponent {
       });
     }
   }
-  
+
   private isSubmitted: boolean = false;
 
   course: Partial<Courses> | undefined
@@ -69,15 +69,22 @@ export class AddCourseFormComponent {
       content: new FormControl('', Validators.required)
     }));
   }
+
+
   removeLesson(index: number): void {
     this.lessons.removeAt(index);
-    let l: Partial<Lessons>[] = []
-    for (let i = 0; i < this.tmp.length && index != i; i++) {
-      l.push(this.tmp[index]);
+    this.cdr.detectChanges();
+    this.sent("laod")
+    // let l: Partial<Lessons>[] = []
+    // for (let i = 0; i < this.tmp.length && index != i; i++) {
+    //   l.push(this.tmp[index]);
+    // }
 
-    }
+    // window.location.reload();
+
   }
-  sent() {
+
+  sent(typ: string) {
     this.user.getTeacerById(this.addCourseForm.value.teacherId as string).subscribe(res => {
       this.isSubmitted = true
       if (this.course == undefined) {
@@ -85,8 +92,11 @@ export class AddCourseFormComponent {
       } else {
         this.updateCourse(this.addCourseForm.value as Partial<Courses>, this.course.id);
       }
-      this.router.navigate(['/home/courses-page']);
-
+      if (typ == "send")
+        this.router.navigate(['/home/courses-page']);
+      else {
+        window.location.reload();
+      }
     }, error => {
 
       alert("The teacherId is not valid. Please try again.");
