@@ -87,7 +87,7 @@ export class AddCourseFormComponent {
       if (typ == "send")
         this.router.navigate(['/home/courses-page']);
       else {
-
+        window.location.reload();    
       }
     }, error => {
 
