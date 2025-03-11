@@ -73,6 +73,7 @@ export class AddCourseFormComponent {
 
   removeLesson(index: number): void {
     this.lessons.removeAt(index);   
+    this.sent("laod")
 
   }
 
@@ -87,7 +88,7 @@ export class AddCourseFormComponent {
       if (typ == "send")
         this.router.navigate(['/home/courses-page']);
       else {
-        window.location.reload();    
+window.location.reload();
       }
     }, error => {
 
