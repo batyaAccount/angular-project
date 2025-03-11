@@ -7,6 +7,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { TmpComponent } from './components/tmp/tmp.component';
 
 export const routes: Routes = [
     { path: '', component: LoginPageComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: "sign-up", component: SignUpComponent },
     { path: "add-course", component: AddCourseFormComponent },
     { path: "add-course/:courseId", component: AddCourseFormComponent},
+    { path: "tmp/:id", component: TmpComponent},
     { path: "home", component: HomePageComponent, children: [
             {
                 path: "my-courses", component: MyCoursesComponent, children: [
